@@ -1,1 +1,114 @@
-<p>list-campaign works!</p>
+<div class="wrapper">
+  <h3 nz-typography>All requests</h3>
+  <br>
+  <div nz-row class="filter">
+    <div nz-col nzSpan="12">
+      <div nz-space nzAlign="baseline" nzSize="large">
+        <span *nzSpaceItem nz-typography><strong>FILTERS</strong></span>
+        <div *nzSpaceItem>
+          <nz-input-group [nzSuffix]="inputClearTpl">
+            <input type="text" nz-input [(ngModel)]="searchText" placeholder="Search" />
+          </nz-input-group>
+          <ng-template #inputClearTpl>
+            <span
+              nz-icon
+              class="ant-input-clear-icon"
+              nzTheme="fill"
+              nzType="close-circle"
+              *ngIf="searchText"
+              (click)="searchText = null"
+            ></span>
+          </ng-template>
+        </div>
+        <nz-select *nzSpaceItem nzShowSearch nzAllowClear nzPlaceHolder="-Brand-">
+          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+          <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+          <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+    <div nz-col nzSpan="2" nzOffset="10">
+      <button nz-button nzType="primary">Filter</button>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="list-data">
+    <div nz-row class="header-list">
+      <span nz-col nzSpan="2" class="text-center"><strong>Status</strong></span>
+      <span nz-col nzSpan="10" class="pl-20"><strong>Name</strong></span>
+      <span nz-col nzSpan="3" class="pl-20"><strong>Type</strong></span>
+      <span nz-col nzSpan="3" class="pl-20"><strong>Brand</strong></span>
+      <span nz-col nzSpan="3" class="pl-20"><strong>Submission</strong></span>
+      <span nz-col nzSpan="3"></span>
+    </div>
+    <div nz-row nzAlign="middle" class="item-list">
+      <div nz-col nzSpan="2" class="text-center f-600 text-primary">
+        <div>
+          <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
+        </div>
+        <span>Pending</span>
+      </div>
+      <div nz-col class="pl-20 f-600 text-primary name" nzSpan="10">Test collaboration</div>
+      <div nz-col class="pl-20" nzSpan="3">
+        <div class="type-item">Request</div>
+      </div>
+      <div nz-col class="pl-20 submission f-600" nzSpan="3">Brand 1</div>
+      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">August 10th 2023</div>
+      <div nz-col nzSpan="3">
+        <span nz-icon nzType="right" class="float-right arrow-item" nzTheme="outline"></span>
+      </div>
+    </div>
+    <div nz-row nzAlign="middle" class="item-list">
+      <div nz-col nzSpan="2" class="text-center f-600 text-primary">
+        <div>
+          <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
+        </div>
+        <span>Pending</span>
+      </div>
+      <div nz-col class="pl-20 f-600 text-primary name" nzSpan="10">Test collaboration</div>
+      <div nz-col class="pl-20" nzSpan="3">
+        <div class="type-item type-danger">Request</div>
+      </div>
+      <div nz-col class="pl-20 submission f-600" nzSpan="3">Brand 1</div>
+      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">August 10th 2023</div>
+      <div nz-col nzSpan="3">
+        <span nz-icon nzType="right" class="float-right arrow-item" nzTheme="outline"></span>
+      </div>
+    </div>
+    <div nz-row nzAlign="middle" class="item-list">
+      <div nz-col nzSpan="2" class="text-center f-600 text-success">
+        <div>
+          <span nz-icon nzType="check-circle" nzTheme="outline"></span>
+        </div>
+        <span>Pending</span>
+      </div>
+      <div nz-col class="pl-20 f-600 text-primary name" nzSpan="10">Test collaboration</div>
+      <div nz-col class="pl-20" nzSpan="3">
+        <div class="type-item">Request</div>
+      </div>
+      <div nz-col class="pl-20 submission f-600" nzSpan="3">Brand 1</div>
+      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">August 10th 2023</div>
+      <div nz-col nzSpan="3">
+        <span nz-icon nzType="right" class="float-right arrow-item" nzTheme="outline"></span>
+      </div>
+    </div>
+    <div nz-row nzAlign="middle" class="item-list">
+      <div nz-col nzSpan="2" class="text-center f-600 text-danger">
+        <div>
+          <span nz-icon nzType="close-circle" nzTheme="outline"></span>
+        </div>
+        <span>Pending</span>
+      </div>
+      <div nz-col class="pl-20 f-600 text-primary name" nzSpan="10">Test collaboration</div>
+      <div nz-col class="pl-20" nzSpan="3">
+        <div class="type-item">Request</div>
+      </div>
+      <div nz-col class="pl-20 submission f-600" nzSpan="3">Brand 1</div>
+      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">August 10th 2023</div>
+      <div nz-col nzSpan="3">
+        <span nz-icon nzType="right" class="float-right arrow-item" nzTheme="outline"></span>
+      </div>
+    </div>
+  </div>
+</div>
