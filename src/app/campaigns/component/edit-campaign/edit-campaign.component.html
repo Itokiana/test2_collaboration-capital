@@ -1,1 +1,32 @@
-<p>edit-campaign works!</p>
+<div class="wrapper">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="brand">Brand</nz-form-label>
+      <nz-form-control [nzSm]="10" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <nz-select nzShowSearch nzPlaceHolder="-Brand-" id="brand">
+          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+          <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+          <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="campaignName">Campaign name</nz-form-label>
+      <nz-form-control [nzSm]="10" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="campaignName" id="campaignName" />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="campaignName">Media</nz-form-label>
+      <nz-form-control [nzSpan]="10">
+        <nz-checkbox-group formControlName="media" [(ngModel)]="checkOptionsOne" (ngModelChange)="log(checkOptionsOne)"></nz-checkbox-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>Deadline for decision</nz-form-label>
+      <nz-form-control [nzSm]="16" [nzXs]="24">
+        <nz-date-picker formControlName="decisionDeadline"></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>
