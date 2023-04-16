@@ -10,12 +10,16 @@ import fr from '@angular/common/locales/fr';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListCampaignComponent } from './campaigns/list-campaign/list-campaign.component';
+import { EditCampaignComponent } from './campaigns/edit-campaign/edit-campaign.component';
 
 registerLocaleData(fr);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListCampaignComponent,
+    EditCampaignComponent
   ],
   imports: [
     BrowserModule,
