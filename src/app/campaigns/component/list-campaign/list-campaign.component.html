@@ -40,7 +40,13 @@
       <span nz-col nzSpan="3" class="pl-20"><strong>Submission</strong></span>
       <span nz-col nzSpan="3"></span>
     </div>
-    <div nz-row nzAlign="middle" class="item-list" *ngFor="let req of requests | searchByName: searchFilter | filterByBrand: brandFilter">
+    <div
+      nz-row
+      nzAlign="middle"
+      class="item-list"
+      *ngFor="let req of requests | searchByName: searchFilter | filterByBrand: brandFilter"
+      (click)="redirectToEdit(req.requestId)"
+    >
       <div
         nz-col nzSpan="2"
         class="text-center f-600 text-primary"
