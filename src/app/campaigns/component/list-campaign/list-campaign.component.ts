@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-campaign.component.scss']
 })
 export class ListCampaignComponent {
-
+  searchText?: string | null;
 }
