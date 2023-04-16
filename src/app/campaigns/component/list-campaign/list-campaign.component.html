@@ -64,7 +64,7 @@
         <div class="type-item" [ngClass]="{'type-danger': req.advice}">{{ req.advice ? 'Advice':'Request'}}</div>
       </div>
       <div nz-col class="pl-20 submission f-600" nzSpan="3">{{ req.brand?.name }}</div>
-      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">{{ req.submittedDate }}</div>
+      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">{{ req.submittedDate ? formatDate(req.submittedDate) :  'unknown' }}</div>
       <div nz-col nzSpan="3">
         <span nz-icon nzType="right" class="float-right arrow-item" nzTheme="outline"></span>
       </div>
