@@ -20,15 +20,13 @@
             ></span>
           </ng-template>
         </div>
-        <nz-select *nzSpaceItem nzShowSearch nzAllowClear nzPlaceHolder="-Brand-">
-          <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-          <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-          <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+        <nz-select *nzSpaceItem nzShowSearch nzAllowClear nzPlaceHolder="--Brand--" [(ngModel)]="brandId">
+          <nz-option *ngFor="let brand of brands" [nzLabel]="brand.name" [nzValue]="brand.brandId"></nz-option>
         </nz-select>
       </div>
     </div>
     <div nz-col nzSpan="2" nzOffset="10">
-      <button nz-button nzType="primary">Filter</button>
+      <button nz-button nzType="primary" (click)="filterRequest()">Filter</button>
     </div>
   </div>
   <br>
@@ -42,70 +40,31 @@
       <span nz-col nzSpan="3" class="pl-20"><strong>Submission</strong></span>
       <span nz-col nzSpan="3"></span>
     </div>
-    <div nz-row nzAlign="middle" class="item-list">
-      <div nz-col nzSpan="2" class="text-center f-600 text-primary">
+    <div nz-row nzAlign="middle" class="item-list" *ngFor="let req of requests | searchByName: searchFilter | filterByBrand: brandFilter">
+      <div
+        nz-col nzSpan="2"
+        class="text-center f-600 text-primary"
+        [ngClass]="{
+          'text-success': req.requestStatus?.name === 'VALIDATED',
+          'text-danger': req.requestStatus?.name === 'REJECTED',
+        }"
+      >
         <div>
-          <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
+          <span *ngIf="req.requestStatus?.name === 'TO_REVIEW'" nz-icon nzType="file-search" nzTheme="outline"></span>
+          <span *ngIf="req.requestStatus?.name === 'DRAFT'" nz-icon nzType="container" nzTheme="outline"></span>
+          <span *ngIf="req.requestStatus?.name === 'SUBMITTED'" nz-icon nzType="clock-circle" nzTheme="outline"></span>
+          <span *ngIf="req.requestStatus?.name === 'VALIDATED'" nz-icon nzType="check-circle" nzTheme="outline"></span>
+          <span *ngIf="req.requestStatus?.name === 'REJECTED'" nz-icon nzType="close-circle" nzTheme="outline"></span>
+          <span *ngIf="req.requestStatus?.name === 'TO_MODIFY'" nz-icon nzType="edit" nzTheme="outline"></span>
         </div>
-        <span>Pending</span>
+        <span>{{ req.requestStatus?.value }}</span>
       </div>
-      <div nz-col class="pl-20 f-600 text-primary name" nzSpan="10">Test collaboration</div>
+      <div nz-col class="pl-20 f-600 text-primary name" nzSpan="10">{{ req.campaignName }}</div>
       <div nz-col class="pl-20" nzSpan="3">
-        <div class="type-item">Request</div>
+        <div class="type-item" [ngClass]="{'type-danger': req.advice}">{{ req.advice ? 'Advice':'Request'}}</div>
       </div>
-      <div nz-col class="pl-20 submission f-600" nzSpan="3">Brand 1</div>
-      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">August 10th 2023</div>
-      <div nz-col nzSpan="3">
-        <span nz-icon nzType="right" class="float-right arrow-item" nzTheme="outline"></span>
-      </div>
-    </div>
-    <div nz-row nzAlign="middle" class="item-list">
-      <div nz-col nzSpan="2" class="text-center f-600 text-primary">
-        <div>
-          <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
-        </div>
-        <span>Pending</span>
-      </div>
-      <div nz-col class="pl-20 f-600 text-primary name" nzSpan="10">Test collaboration</div>
-      <div nz-col class="pl-20" nzSpan="3">
-        <div class="type-item type-danger">Request</div>
-      </div>
-      <div nz-col class="pl-20 submission f-600" nzSpan="3">Brand 1</div>
-      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">August 10th 2023</div>
-      <div nz-col nzSpan="3">
-        <span nz-icon nzType="right" class="float-right arrow-item" nzTheme="outline"></span>
-      </div>
-    </div>
-    <div nz-row nzAlign="middle" class="item-list">
-      <div nz-col nzSpan="2" class="text-center f-600 text-success">
-        <div>
-          <span nz-icon nzType="check-circle" nzTheme="outline"></span>
-        </div>
-        <span>Pending</span>
-      </div>
-      <div nz-col class="pl-20 f-600 text-primary name" nzSpan="10">Test collaboration</div>
-      <div nz-col class="pl-20" nzSpan="3">
-        <div class="type-item">Request</div>
-      </div>
-      <div nz-col class="pl-20 submission f-600" nzSpan="3">Brand 1</div>
-      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">August 10th 2023</div>
-      <div nz-col nzSpan="3">
-        <span nz-icon nzType="right" class="float-right arrow-item" nzTheme="outline"></span>
-      </div>
-    </div>
-    <div nz-row nzAlign="middle" class="item-list">
-      <div nz-col nzSpan="2" class="text-center f-600 text-danger">
-        <div>
-          <span nz-icon nzType="close-circle" nzTheme="outline"></span>
-        </div>
-        <span>Pending</span>
-      </div>
-      <div nz-col class="pl-20 f-600 text-primary name" nzSpan="10">Test collaboration</div>
-      <div nz-col class="pl-20" nzSpan="3">
-        <div class="type-item">Request</div>
-      </div>
-      <div nz-col class="pl-20 submission f-600" nzSpan="3">Brand 1</div>
-      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">August 10th 2023</div>
+      <div nz-col class="pl-20 submission f-600" nzSpan="3">{{ req.brand?.name }}</div>
+      <div nz-col class="pl-20 text-primary f-600" nzSpan="3">{{ req.submittedDate }}</div>
       <div nz-col nzSpan="3">
         <span nz-icon nzType="right" class="float-right arrow-item" nzTheme="outline"></span>
       </div>

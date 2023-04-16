@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { CampaignsRoutes } from './campaigns.routing';
 
@@ -19,13 +21,19 @@ import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 import { ListCampaignComponent } from './component/list-campaign/list-campaign.component';
 import { EditCampaignComponent } from './component/edit-campaign/edit-campaign.component';
+import { BrandService } from './service/brand.service';
+import { RequestService } from './service/request.service';
+import { searchByNamePipe } from '../shared/pipes/searchByName.pipe';
+import { filterByBrandPipe } from '../shared/pipes/filterByBrand.pipe';
 
 
 
 @NgModule({
   declarations: [
     ListCampaignComponent,
-    EditCampaignComponent
+    EditCampaignComponent,
+    searchByNamePipe,
+    filterByBrandPipe
   ],
   imports: [
     CommonModule,
@@ -42,7 +50,12 @@ import { EditCampaignComponent } from './component/edit-campaign/edit-campaign.c
     NzSpaceModule,
     NzSelectModule,
     NzIconModule,
-    NzBadgeModule
+    NzBadgeModule,
+    HttpClientModule,
+  ],
+  providers: [
+    BrandService,
+    RequestService
   ]
 })
 export class CampaignsModule { }
