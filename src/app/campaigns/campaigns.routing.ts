@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { ListCampaignComponent } from './list-campaign/list-campaign.component';
-import { EditCampaignComponent } from './edit-campaign/edit-campaign.component';
+import { ListCampaignComponent } from './component/list-campaign/list-campaign.component';
+import { EditCampaignComponent } from './component/edit-campaign/edit-campaign.component';
 
 export const CampaignsRoutes: Routes = [
   {
