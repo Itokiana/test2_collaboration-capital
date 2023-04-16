@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ListCampaignComponent implements OnInit {
   searchText?: string | null = '';
-  brandId?: number | null;
+  brandId?: number | null = null;
   brands:  Brand[] = [];
   requests: Request[] = [];
   searchFilter: string = '';
