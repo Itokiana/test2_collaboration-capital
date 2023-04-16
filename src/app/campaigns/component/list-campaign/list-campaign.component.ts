@@ -3,6 +3,7 @@ import { BrandService } from '../../service/brand.service';
 import { Brand } from '../../model/brand.model';
 import { RequestService } from '../../service/request.service';
 import { Request } from '../../model/request.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-list-campaign',
@@ -34,5 +35,9 @@ export class ListCampaignComponent implements OnInit {
   filterRequest(): void {
     this.searchFilter = JSON.parse(JSON.stringify(this.searchText));
     this.brandFilter = JSON.parse(JSON.stringify(this.brandId));
+  }
+
+  formatDate(date: string) {
+    return moment(date).format('LLL');
   }
 }
