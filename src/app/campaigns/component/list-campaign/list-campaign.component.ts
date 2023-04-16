@@ -4,6 +4,7 @@ import { Brand } from '../../model/brand.model';
 import { RequestService } from '../../service/request.service';
 import { Request } from '../../model/request.model';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-campaign',
@@ -18,7 +19,11 @@ export class ListCampaignComponent implements OnInit {
   searchFilter: string = '';
   brandFilter: number | null = null;
 
-  constructor(private brandService: BrandService, private requestServce: RequestService) {}
+  constructor(
+    private brandService: BrandService,
+    private requestServce: RequestService,
+    private router:  Router
+  ) {}
 
   ngOnInit() {
     this.brandService.getBrands()
@@ -39,5 +44,9 @@ export class ListCampaignComponent implements OnInit {
 
   formatDate(date: string) {
     return moment(date).format('LLL');
+  }
+
+  redirectToEdit(requestId: number): void {
+    this.router.navigate(['/campaigns/edit', requestId]);
   }
 }
